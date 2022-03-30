@@ -3,7 +3,7 @@
 A few python codes to adapt the KappaTNG suite (Osato, Liu, and Haiman (2021)) into an HSC S16A-Like suite, apply a Gaussian smooth kernel, and compute several non-Gaussian statistics.
 
 
-Example of the Baryon effect in one of the noisy realizations:
+Example of the Baryonic effect in one of the noisy realizations:
 
 
 <p float="center">
