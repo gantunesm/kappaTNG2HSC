@@ -5,8 +5,8 @@ Example of the Baryon effect in one of the noisy realizations:
 
 
 <p float="center">
-<img src="/figures/comparison_realization_10.png" width="400"/> 
-  
+<img src="/figures/comparison_realization_10.png" width="1000"/> 
+ 
 </p>
 
  
