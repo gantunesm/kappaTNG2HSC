@@ -6,10 +6,10 @@
 #SBATCH --cpus-per-task=1
 #SBATCH -C knl
 ##haswell
-#SBATCH -t 03:00:00
-#SBATCH -J make_hydro
-#SBATCH -o make_hydro.o%j
-#SBATCH -e make_hydro.e%j
+#SBATCH -t 04:00:00
+#SBATCH -J dark_stats
+#SBATCH -o dark_stats.o%j
+#SBATCH -e dark_stats.e%j
 #SBATCH --qos=regular
 ##regular
 #SBATCH -A mp107
@@ -19,4 +19,4 @@
 #source /global/common/software/m3035/conda-activate.sh 3.7
 
 
-python /global/homes/g/gmarques/hsc_ng/scripts/baryons_sims_dark.py
+python /global/homes/g/gmarques/hsc_ng/scripts/make_noisytng_dark_stats.py
