@@ -48,12 +48,15 @@ def mass_product (counter):
               ww = np.load('/global/homes/g/gmarques/hsc_ng/for_baryons/weights_pz/pz_'+zs[zz]+'_zstng_normed.npy')
               kappa = cosmos_kappa_gen(LP, run, ww)
               np.save(fn, kappa)
+              std_kappa = kappa.std()
+              fn2 = '/global/cscratch1/sd/gmarques/tng/kappaTNG-Hydro_HSCzs/'+zs[zz]+'/std_kappa%i.npy' % (counter)
+              np.save(fn2, std_kappa)
 
 
 
 
 pool = Pool() 
-out= pool.map(mass_product, np.arange(1, 2000))
+out= pool.map(mass_product, np.arange(2000, 8000))
 pool.close()
 
 

@@ -51,7 +51,7 @@ L = 4
 
 filters_set = np.load('/home/gmarques/ng_hsc/filters_set_mycode_M'+str(M)+'N'+str(N)+'J'+str(J)+'L'+str(L)+'_single.npy',allow_pickle=True)[0]['filters_set']
 ST_calculator = ST_mycode_new(filters_set, J, L )
-path_stats = '/lustre/work/gmarques/kappa_TNG/stats_TNG_Dark/'
+path_stats = '/lustre/work/gmarques/kappa_TNG/stats_TNG_Dark_stdunit/'
 
 
 # filters_set = np.load('/global/homes/g/gmarques/hsc_ng/filters_set_mycode_M'+str(M)+'N'+str(N)+'J'+str(J)+'L'+str(L)+'_single.npy',allow_pickle=True)[0]['filters_set']
@@ -108,7 +108,7 @@ def map_stats(out_Emode, out_Bmode, masks_s, nbins, sigmas, theta_smooth, lx_rad
     #Compute the statistics:
     
     #V0,v1,V2, pdf, peak-counts, minima  :  
-    stats_threshold = [stats.get_stats(out_Emode[theta_g],masks_s ,np.linspace(-4,4,nbins)*sigmas[theta_g]) for theta_g in range(len(theta_smooth)) ]
+    stats_threshold = [stats.get_stats(out_Emode[theta_g]/sigmas[theta_g],masks_s ,np.linspace(-4,4,nbins)) for theta_g in range(len(theta_smooth)) ]
     
     V0 = np.array(stats_threshold)[:,0,:]
     V1 = np.array(stats_threshold)[:,1,:]
@@ -173,8 +173,8 @@ def add_noise_stats(counter):
         k_smoothed = [smooth_map(kappa_total, thetai) for thetai in theta_smooth]
 
         #Read std to compute stats:
-
-        std_bar = np.load('/home/gmarques/ng_hsc/mean_std_fid_mocks/mean_std_wide12hallsmoothscales_'+zs[zz]+'.npy')
+        std_bar = [np.std(k_smoothed[t]) for t in range(len(theta_smooth))]
+        # std_bar = np.load('/home/gmarques/ng_hsc/mean_std_fid_mocks/mean_std_wide12hallsmoothscales_'+zs[zz]+'.npy')
 
         # std_bar = np.load('/global/homes/g/gmarques/hsc_ng/for_baryons/std/mean_std_wide12hallsmoothscales_'+zs[zz]+'.npy')
 
